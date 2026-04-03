@@ -1,15 +1,16 @@
 # Zadar Transfers — web
 
-Statična React SPA u mapi `zadar-transfer-hub-main/`.
+Statična React SPA u **korijenu ovog repozitorija** (`index.html`, `assets/`, `vercel.json`).
 
 ## Vercel
 
-1. Spoji repo [nikolaus22345/zadar-transfers](https://github.com/nikolaus22345/zadar-transfers) u Vercelu (**Import Project**).
-2. **Root Directory:** postavi na `zadar-transfer-hub-main` (važno — tamo je `index.html` i `vercel.json`).
-3. **Build:** nije potreban (nema `package.json` builda) — ostavi prazno ili “Other”.
-4. Deploy.
+1. Importaj repo [nikolaus22345/zadar-transfers](https://github.com/nikolaus22345/zadar-transfers).
+2. **Root Directory:** ostavi **prazno** ili **`.`** (korijen repozitorija — tamo je `index.html`).
+3. **Framework preset:** Other / ili “Static” ako postoji.
+4. **Build Command:** ostavi prazno (nema builda).
+5. Deploy.
 
-`vercel.json` šalje sve rute koje nisu pod `/assets/` na `index.html` (client-side routing).
+`vercel.json` usmjerava client-side rute na `index.html`.
 
 ## GitHub
 
