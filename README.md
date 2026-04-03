@@ -12,6 +12,13 @@ Statična React SPA u **korijenu ovog repozitorija** (`index.html`, `assets/`, `
 
 `vercel.json` usmjerava client-side rute na `index.html`.
 
+### E-mail s formi (samo Zadar)
+
+Ne koristi se EmailJS (da se ne miješa s drugim projektima). Forme šalju na Vercel rutu **`/api/send-form`**, koja prosljeđuje na [Web3Forms](https://web3forms.com):
+
+1. Napravi **Access Key** na Web3Forms i kao inbox stavi **zadartransfers.hr@gmail.com**.
+2. U Vercelu dodaj env var **`WEB3FORMS_ACCESS_KEY`** i napravi **Redeploy**.
+
 ## GitHub
 
 ```bash
