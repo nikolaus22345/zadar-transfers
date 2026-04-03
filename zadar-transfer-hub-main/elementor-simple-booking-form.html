@@ -1,0 +1,226 @@
+﻿<!-- JEDNOSTAVNA BOOKING FORMA ZA WORDPRESS/ELEMENTOR -->
+<!-- Kopiraj ovaj kod u Elementor HTML widget -->
+
+<div class="booking-form-wrapper">
+  <form id="simple-booking-form" method="GET" action="https://zadar-transfers.hr/booking">
+    
+    <div class="form-group">
+      <label for="pickup">PICK UP</label>
+      <input 
+        type="text" 
+        id="pickup" 
+        name="pickup" 
+        placeholder="Enter pickup location" 
+        required
+        autocomplete="off"
+      />
+      <div id="pickup-suggestions" class="suggestions-dropdown"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="dropoff">DROP OFF</label>
+      <input 
+        type="text" 
+        id="dropoff" 
+        name="dropoff" 
+        placeholder="Enter drop-off location" 
+        required
+        autocomplete="off"
+      />
+      <div id="dropoff-suggestions" class="suggestions-dropdown"></div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date">DATE</label>
+        <input 
+          type="date" 
+          id="date" 
+          name="date" 
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="people">PEOPLE</label>
+        <input 
+          type="number" 
+          id="people" 
+          name="people" 
+          min="1" 
+          max="50" 
+          value="1" 
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>TRANSFER TYPE</label>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="transfer_type" value="oneway" checked />
+          <span>One way</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="transfer_type" value="return" />
+          <span>With return</span>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">SEARCH</button>
+  </form>
+</div>
+
+<style>
+.booking-form-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #F6C344;
+  box-shadow: 0 0 0 3px rgba(246, 195, 68, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.radio-label input[type="radio"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: #F6C344;
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+  background: #e5b333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(246, 195, 68, 0.3);
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.suggestions-dropdown.active {
+  display: block;
+}
+
+.suggestion-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background: #f8f8f8;
+}
+
+.suggestion-icon {
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.suggestion-text {
+  flex: 1;
+}
+
+.suggestion-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.suggestion-city {
+  font-size: 12px;
+  color: #999;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

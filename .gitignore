@@ -1,0 +1,11 @@
+.vercel
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.log
+
+# Ostali projekti u istom folderu (ne treba u ovaj repo)
+zagreb-transfer-hub-main/
+zagreb-transfer-hub-main.zip
+extracted-zagreb-transfer-hub-main/

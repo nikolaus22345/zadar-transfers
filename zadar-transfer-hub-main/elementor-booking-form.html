@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form - Zadar Transfers</title>
+    <link rel="stylesheet" href="booking-form-styles.css">
+</head>
+<body>
+    <div class="booking-form-container">
+        <div class="booking-form-card">
+            <div class="form-header">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </div>
+                <h3>Book Your Transfer</h3>
+            </div>
+
+            <form id="booking-form" class="booking-form">
+                <!-- Pickup Location -->
+                <div class="form-group">
+                    <label for="pickup">PICK UP</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="pickup" 
+                            name="pickup" 
+                            placeholder="Enter pickup location"
+                            autocomplete="off"
+                            required
+                        >
+                        <div id="pickup-suggestions" class="suggestions-dropdown"></div>
+                    </div>
+                </div>
+
+                <!-- Dropoff Location -->
+                <div class="form-group">
+                    <label for="dropoff">DROP OFF</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="dropoff" 
+                            name="dropoff" 
+                            placeholder="Enter drop-off location"
+                            autocomplete="off"
+                            required
+                        >
+                        <div id="dropoff-suggestions" class="suggestions-dropdown"></div>
+                    </div>
+                </div>
+
+                <!-- Date and People -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">DATE</label>
+                        <input 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="people">PEOPLE</label>
+                        <input 
+                            type="number" 
+                            id="people" 
+                            name="people" 
+                            value="1" 
+                            min="1" 
+                            max="50"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Transfer Type -->
+                <div class="form-group">
+                    <label>TRANSFER TYPE</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="transfer_type" value="one-way" checked>
+                            <span>One way</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="transfer_type" value="return">
+                            <span>With return</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">SEARCH</button>
+
+                <!-- Success/Error Messages -->
+                <div id="form-message" class="form-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="booking-form-script.js"></script>
+</body>
+</html>
+

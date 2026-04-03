@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger Menu - Zadar Transfers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #FDB400;
+        }
+
+        /* Hamburger Button */
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .hamburger-btn:hover {
+            opacity: 0.8;
+        }
+
+        .hamburger-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 998;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Menu Panel */
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: #1a1a2e;
+            color: white;
+            padding: 2rem;
+            transition: right 0.3s ease-out;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .menu-panel.active {
+            right: 0;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .close-btn:hover {
+            opacity: 0.7;
+        }
+
+        .close-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Menu Title */
+        .menu-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FDB400;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        /* Menu Items */
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-link {
+            display: block;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .menu-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Get Quote Button */
+        .quote-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 2rem;
+            background: #FDB400;
+            color: #1a1a2e;
+            border: 2px solid #FDB400;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quote-btn:hover {
+            background: transparent;
+            color: #FDB400;
+        }
+
+        /* Body scroll lock */
+        body.menu-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Hamburger Button -->
+    <header class="header">
+        <div class="logo">Zadar Transfers</div>
+        <button class="hamburger-btn" onclick="openMenu()" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
+    <!-- Menu Panel -->
+    <nav class="menu-panel" id="menuPanel">
+        <button class="close-btn" onclick="closeMenu()" aria-label="Close menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <h2 class="menu-title">Menu</h2>
+
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="/" class="menu-link" onclick="closeMenu()">HOME</a>
+            </li>
+            <li class="menu-item">
+                <a href="/transfers" class="menu-link" onclick="closeMenu()">TRANSFERS</a>
+            </li>
+            <li class="menu-item">
+                <a href="/about-us" class="menu-link" onclick="closeMenu()">ABOUT US</a>
+            </li>
+            <li class="menu-item">
+                <a href="/blog" class="menu-link" onclick="closeMenu()">Blog</a>
+            </li>
+            <li class="menu-item">
+                <a href="/contact" class="menu-link" onclick="closeMenu()">CONTACT</a>
+            </li>
+        </ul>
+
+        <a href="/get-quote" class="quote-btn" onclick="closeMenu()">GET A QUOTE</a>
+    </nav>
+
+    <script>
+        function openMenu() {
+            document.getElementById('menuOverlay').classList.add('active');
+            document.getElementById('menuPanel').classList.add('active');
+            document.body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            document.getElementById('menuOverlay').classList.remove('active');
+            document.getElementById('menuPanel').classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    </script>
+</body>
+</html>
